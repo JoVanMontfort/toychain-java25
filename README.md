@@ -21,7 +21,7 @@ This project demonstrates the fundamentals of blockchain:
 ```
 toychain-java25
 ├── pom.xml
- └── src/
+└── src/
      ├── main/
      │   └── java/
      │       └── com/
