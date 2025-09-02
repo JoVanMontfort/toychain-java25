@@ -26,7 +26,7 @@ toychain-java25
      │   └── java/
      │       └── com/
      │           └── blockchain/
-     │               └── tutorial/
+     │               └── core/
      │                   ├── Block.java
      │                   ├── Blockchain.java
      │                   └── Main.java
@@ -34,7 +34,7 @@ toychain-java25
          └── java/
              └── com/
                  └── blockchain/
-                     └── tutorial/
+                     └── core/
                          └── BlockchainTest.java
 ```
 
