@@ -19,11 +19,23 @@ This project demonstrates the fundamentals of blockchain:
 
 ## 📂 Project Structure
 ```
-src/
-└── com/blockchain/tutorial/
-├── Block.java # Block structure with SHA-256 hashing
-├── Blockchain.java # Blockchain logic (add, validate, get latest)
-└── Main.java # Demo entry point
+toychain-java25
+├── pom.xml
+ └── src/
+     ├── main/
+     │   └── java/
+     │       └── com/
+     │           └── blockchain/
+     │               └── tutorial/
+     │                   ├── Block.java
+     │                   ├── Blockchain.java
+     │                   └── Main.java
+     └── test/
+         └── java/
+             └── com/
+                 └── blockchain/
+                     └── tutorial/
+                         └── BlockchainTest.java
 ```
 
 ---
