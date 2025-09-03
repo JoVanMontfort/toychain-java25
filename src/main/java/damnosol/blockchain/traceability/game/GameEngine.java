@@ -89,9 +89,11 @@ public class GameEngine {
             String[] journey = journeys[random.nextInt(journeys.length)];
             String product = journey[0];
 
-            // Generate blockchain with dynamic genesis
-            Blockchain chain = new Blockchain();
-            chain.addBlock(new Transaction("Origin", journey[1], product, "Harvested / created at source"));
+            // ✅ Genesis block is now passed into Blockchain
+            Transaction genesisTx = new Transaction("Origin", journey[1], product, "Harvested / created at source");
+            Blockchain chain = new Blockchain(genesisTx);
+
+            // Add supply chain steps
             chain.addBlock(new Transaction(journey[1], journey[2], product, generateNote(product, 1)));
             chain.addBlock(new Transaction(journey[2], journey[3], product, generateNote(product, 2)));
             chain.addBlock(new Transaction(journey[3], journey[4], product, generateNote(product, 3)));
@@ -102,6 +104,8 @@ public class GameEngine {
                 List<Block> blocks = chain.getChain();
                 int tamperedIndex = random.nextInt(1, blocks.size()); // avoid genesis
                 Transaction originalTx = blocks.get(tamperedIndex).transaction();
+
+                // ✅ use getNote() if Transaction is a class with getters
                 String tamperedNote = tamperNote(originalTx.description());
 
                 Transaction fakeTx = new Transaction(

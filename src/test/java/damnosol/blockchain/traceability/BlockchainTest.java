@@ -9,26 +9,36 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BlockchainTest {
 
+    private Blockchain newChain() {
+        return new Blockchain(
+                new Transaction("Origin", "Farmer", "Coffee Beans", "Genesis block - farm harvested")
+        );
+    }
+
     @Test
     void testGenesisBlockExists() {
-        Blockchain chain = new Blockchain();
-        assertEquals(1, chain.getChain().size(), "Blockchain should start with 1 genesis block");
-        assertEquals("0", chain.getChain().getFirst().previousHash(), "Genesis block should have previousHash = '0'");
+        Blockchain chain = newChain();
+        assertEquals(1, chain.getChain().size(),
+                "Blockchain should start with 1 genesis block");
+        assertEquals("0", chain.getChain().get(0).previousHash(),
+                "Genesis block should have previousHash = '0'");
     }
 
     @Test
     void testAddBlocksAndValidateChain() {
-        Blockchain chain = new Blockchain();
+        Blockchain chain = newChain();
         chain.addBlock(new Transaction("Farmer", "Distributor", "Coffee Beans", "100kg shipment"));
         chain.addBlock(new Transaction("Distributor", "Retailer", "Coffee Beans", "Packed into 1kg bags"));
 
-        assertEquals(3, chain.getChain().size(), "Blockchain should contain 3 blocks total");
-        assertTrue(chain.isChainValid(), "Blockchain should be valid after adding blocks");
+        assertEquals(3, chain.getChain().size(),
+                "Blockchain should contain 3 blocks total");
+        assertTrue(chain.isChainValid(),
+                "Blockchain should be valid after adding blocks");
     }
 
     @Test
     void testTamperedChainIsInvalid() {
-        Blockchain chain = new Blockchain();
+        Blockchain chain = newChain();
         chain.addBlock(new Transaction("Farmer", "Distributor", "Coffee Beans", "100kg shipment"));
         chain.addBlock(new Transaction("Distributor", "Retailer", "Coffee Beans", "Packed into 1kg bags"));
 
@@ -42,6 +52,7 @@ class BlockchainTest {
         );
         chain.getChain().set(1, tamperedBlock);
 
-        assertFalse(chain.isChainValid(), "Blockchain should be invalid after tampering");
+        assertFalse(chain.isChainValid(),
+                "Blockchain should be invalid after tampering");
     }
 }
