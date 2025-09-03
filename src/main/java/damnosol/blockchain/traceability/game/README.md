@@ -40,7 +40,7 @@ The game highlights the **importance of immutable records**, helping you underst
 1. Ensure you have **Java 21** installed.
 2. Clone or download the project from GitHub:
    ```bash
-   git clone https://github.com/JoVanMontfort/damnosol-swiss-army-knife
+   git clone https://github.com/JoVanMontfort/toychain-java25
    ```
 3. Navigate to the traceability game module.
 4. Run the JavaFX game using Maven:
